@@ -1,0 +1,60 @@
+.noline {
+  margin-bottom : 1ex;
+  margin-top : 0px;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.both, .justify {
+  text-align: justify;
+}
+.underline {
+  text-decoration: underline;
+}
+.code {
+  font-family: Courier New, monospace;
+  text-align: left;
+}
+.caps {
+  text-transform: uppercase;
+}
+.smallCaps {
+  font-variant: small-caps;
+}
+.strike {
+  text-decoration: line-through;
+}
+.dstrike {
+  text-decoration: line-through;
+}
+.superscript {
+  font-size: .83em;
+  vertical-align: super;
+}
+.subscript {
+  font-size: .83em;
+  vertical-align: sub;
+}
+.shadow {
+  text-shadow:1px 1px 1px #999;
+}
+.emboss {
+  text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+  color: #333;
+  opacity: 0.4;
+}
+.engrave {
+  color: #666;
+  text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+}
+.outline {
+ color: white;
+ text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+}
