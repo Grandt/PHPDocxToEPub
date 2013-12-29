@@ -1,0 +1,22 @@
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "grandt/phpdocxtoepub/",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/Grandt/PHPDocxToEPub/",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "classmap": ["Docx2ePub.php", "HtmlTagStack.php", "Resources/Styles.css", "Resources/WordStyles.css"]
+                }
+            }
+        }
+    ],
+    "require": {
+        "grandt/phpepub": "@dev",
+    }
+}
