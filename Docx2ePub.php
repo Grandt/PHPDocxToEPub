@@ -162,7 +162,12 @@ class Docx2ePub {
 						$inTableCell = false;
 						if (array_key_exists('r'.$tableX, $tableRowSpan) && 
 								$tableRowSpan['r'.$tableX] > 1) {
+							unset($this->htmlBlock);
 							break;
+						}
+						if (isset($this->htmlBlock)) {
+							$this->chapter .= $this->htmlBlock;
+							unset($this->htmlBlock);
 						}
 						
 						$this->chapter .= "</td>\n";
@@ -404,6 +409,7 @@ class Docx2ePub {
 							if (sizeof($matches) == 2) {
 								$breakType = $matches[1];
 							}
+											
 							if (isset($breakType) && $breakType == "page" && !$inTable) {
 								$this->chapter .= $this->htmlBlock;
 								unset($this->htmlBlock);
@@ -471,33 +477,24 @@ class Docx2ePub {
 						}
 
 						// build text string of doc
+						$text = $paragraph->expand()->textContent;
 						$this->htmlBlock->body .=
 								($isBold ? '<strong>' : '').
 								($isItalic ? '<em>' : '').
 								(isset($span) ? $span : '').
-								htmlentities($paragraph->expand()->textContent, ENT_COMPAT, 'UTF-8').
+								htmlentities($text, ENT_COMPAT, 'UTF-8').
 								(isset($span) ? '</span>' : '').
 								($isItalic ? '</em>' : '').
 								($isBold ? '</strong>' : '');
 
 						if (isset($elementId)) {
 							//$title .= iconv('UTF-8', 'ASCII//TRANSLIT',$paragraph->expand()->textContent);
-							$title .= $paragraph->expand()->textContent;
+							$title .= $text;
 						}
 
 						if (isset($this->tocRef) && $this->tocRefWrCount <= 0) {
 							$this->htmlBlock->body .= '</a>';
 							unset($this->tocRef);
-						}
-
-						// reset formatting variables
-						foreach ($this->formatting as $key=>$format){
-							if ($format == 'open') {
-								$this->formatting[$key] = 'opened';
-							}
-							if ($format == 'close') {
-								$this->formatting[$key] = 'closed';
-							}
 						}
 					}
 				}        
@@ -506,7 +503,7 @@ class Docx2ePub {
 					unset($this->tocRef);
 				}
 
-				if (!($inTable && !$inTableCell)) {
+				if (!$inTable) {
 					$this->chapter .= $this->htmlBlock;
 					unset($this->htmlBlock);
 				}
@@ -525,7 +522,6 @@ class Docx2ePub {
 	}
 
 	function addChapter($chapterId, $chapter, $chapterPart = FALSE) {
-		//echo "<pre>Chapter:\n" . htmlentities($chapter) . "</pre>\n";
 		if (strlen(trim($chapter)) > 0) {
 			$data = $chapter;
 			// echo "<pre>" . htmlentities($chapter) . "</pre>\n";
