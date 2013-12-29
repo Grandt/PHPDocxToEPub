@@ -17,6 +17,6 @@
         }
     ],
     "require": {
-        "grandt/phpepub": "@dev",
+        "grandt/phpepub": "@dev"
     }
 }
