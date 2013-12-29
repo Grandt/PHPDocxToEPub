@@ -25,14 +25,14 @@ LGPL 2.1
 * Major clean up.
 
 ### Formatting styles
-I'm usingth Resources/WordStyles.css to format these. Apart from Italic and bold all the otrher formats are implemented in a span, with multiple references in the class attribute. (underline superscript is [span class="underline superscript"]...[/span]
+I'm using the stylesheet Resources/WordStyles.css to format these. Apart from italic and bold all the other formats are implemented in a span, with multiple references in the class attribute. (underline superscript is [span class="underline superscript"]...[/span]
 
-I am stuck with Docx' rather odd markup, so if you have offset styling, so you'll see something like for instance [em]something [strong]bold[/strong][/em][strong] goes here[/strong]
+I am stuck with Docx' rather odd markup, so if you have offset styling, you'll see something like for instance [em]something [strong]bold[/strong][/em][strong] goes here[/strong]
 
 ## IMPORTANT
 The code is provided AS IS, and it is still VERY early in development. 
 The target for the script is only basic formatting support, I have no intention of expanding much beyond what is in the H1.docx example.
 The code is a mess, I know. Trial and error is maybe not the best approach after all :P
 
-## Acknowledgements
+## Acknowledgments
 The code is based on a php script by Jack Reichert, his code can be found here: http://www.jackreichert.com/2012/11/09/how-to-convert-docx-to-html/
